@@ -453,7 +453,13 @@ var elasticui;
         filters.filters.filter('euiTimestamp', TimestampFilter);
     })(filters = elasticui.filters || (elasticui.filters = {}));
 })(elasticui || (elasticui = {}));
-angular.module('elasticui.controllers', []).controller(elasticui.controllers);
+var elasticui;
+(function (elasticui) {
+    var controllers;
+    (function (_controllers) {
+        _controllers.controllers = angular.module('elasticui.controllers', []);
+    })(controllers = elasticui.controllers || (elasticui.controllers = {}));
+})(elasticui || (elasticui = {}));
 var elasticui;
 (function (elasticui) {
     var controllers;
@@ -694,7 +700,7 @@ var elasticui;
             };
             IndexController.prototype.search = function () {
                 var _this = this;
-                if (!this.indexVM.loaded || !this.indexVM.index) {
+                if (!this.indexVM.loaded || !this.indexVM.index || this.indexVM.query == null) {
                     return;
                 }
                 if (this.refreshPromise != null) {
