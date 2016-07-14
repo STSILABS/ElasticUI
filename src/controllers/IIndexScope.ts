@@ -21,5 +21,6 @@
         refresh: (softRefresh?: boolean) => void;
         error: any;
         autoLoad: boolean;
+        source: any;
     }
 }

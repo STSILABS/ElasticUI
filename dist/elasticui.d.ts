@@ -164,6 +164,7 @@ declare module elasticui.controllers {
         refresh: (softRefresh?: boolean) => void;
         error: any;
         autoLoad: boolean;
+        source: any;
     }
 }
 declare module elasticui.controllers {

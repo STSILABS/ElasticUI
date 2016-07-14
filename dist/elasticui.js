@@ -620,7 +620,8 @@ var elasticui;
                         return _this.refresh(softRefresh);
                     },
                     error: null,
-                    autoLoad: true
+                    autoLoad: true,
+                    source: null
                 };
                 this.searchPromise = null;
                 this.refreshPromise = null;
@@ -663,6 +664,9 @@ var elasticui;
             };
             IndexController.prototype.getSearchPromise = function () {
                 var request = ejs.Request();
+                if (this.indexVM.source != null) {
+                    request.source(this.indexVM.source);
+                }
                 for (var i = 0; i < this.indexVM.aggregationProviders.objects.length; i++) {
                     var provider = this.indexVM.aggregationProviders.objects[i];
                     var agg = provider(this.filters.ejsObjects);

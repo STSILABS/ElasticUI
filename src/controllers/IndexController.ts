@@ -22,7 +22,8 @@ module elasticui.controllers {
             results: null,
             refresh: (softRefresh: boolean = true) => this.refresh(softRefresh),
             error: null,
-            autoLoad:true
+            autoLoad:true,
+            source:null
         };
 
         public loaded() {
@@ -59,6 +60,10 @@ module elasticui.controllers {
 
         private getSearchPromise() {
             var request = ejs.Request();
+
+            if (this.indexVM.source != null) {
+                request.source(this.indexVM.source);
+            }
 
             for (var i = 0; i < this.indexVM.aggregationProviders.objects.length; i++) {
                 var provider = this.indexVM.aggregationProviders.objects[i];
